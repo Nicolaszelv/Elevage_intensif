@@ -104,6 +104,8 @@ MonoBehaviour:
   maxX: 13
   minY: -6.4
   maxY: 3.5
+  horny_male: 0
+  horny_femelle: 0
 --- !u!58 &-2698442894382993105
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -119,7 +121,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3.26
+  m_Radius: 1
 --- !u!50 &5525258541626490708
 Rigidbody2D:
   serializedVersion: 4
