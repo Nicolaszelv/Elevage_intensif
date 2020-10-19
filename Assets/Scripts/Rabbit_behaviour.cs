@@ -35,4 +35,11 @@ public class Rabbit_behaviour : MonoBehaviour
             }
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "Femelle" & gameObject.tag == "Male")
+        {
+            Debug.Log("baise");
+        }
+    }
 }
