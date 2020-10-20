@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362289089947233744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.19, y: -0.72, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,13 +99,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   startWaitTime: 2
-  moveSpot: {fileID: 0}
+  moveSpot: {fileID: 6860318524052633337, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
   minX: -13
   maxX: 13
   minY: -6.4
   maxY: 3.5
   horny_male: 0
   horny_femelle: 0
+  Sexe:
+  - Male
+  - Femelle
+  Lapin_neutre: {fileID: 1362289089947233744, guid: d62c85c2b26383a44a1748b4ec199fab, type: 3}
+  Move_Spot: {fileID: 6860318524052633286, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
+  thrust: 1
 --- !u!58 &-2698442894382993105
 CircleCollider2D:
   m_ObjectHideFlags: 0
