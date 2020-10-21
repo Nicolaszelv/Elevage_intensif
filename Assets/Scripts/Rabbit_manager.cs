@@ -65,5 +65,5 @@ public class Rabbit_manager : MonoBehaviour
         {
             lapins[iLapinVieux].GetComponent<Rabbit_behaviour>().Kill();
         }
-    } 
+    }
 }

@@ -159,6 +159,7 @@ public class Rabbit_behaviour : MonoBehaviour
                         lapin_n.tag = "Untagged";
                         other.gameObject.GetComponent<Rabbit_behaviour>().horny_femelle = false;
                         horny_male = false;
+                        
                     }
             }  
     }

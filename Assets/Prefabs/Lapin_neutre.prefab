@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0399a263a0820048a8a142cbe8103d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Rabbit_manager: {fileID: 3718277481272107854, guid: 338f2d9ee082737448c6c7a458300a1e, type: 3}
   speed: 5
   waitMin: 1
   waitMax: 3
@@ -119,7 +120,7 @@ MonoBehaviour:
   - Male
   - Femelle
   nb_babies_min: 5
-  nb_babies_max: 12
+  nb_babies_max: 10
   horny_time_min: 2
   horny_time_max: 5
   Lapin_neutre: {fileID: 1362289089947233744}
