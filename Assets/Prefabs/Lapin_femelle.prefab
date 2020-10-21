@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  startWaitTime: 2
+  waitMin: 1
+  waitMax: 3
   moveSpot: {fileID: 6860318524052633337, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
   minX: -13
   maxX: 13
@@ -106,12 +107,18 @@ MonoBehaviour:
   maxY: 3.5
   horny_male: 0
   horny_femelle: 0
+  lifetime: 0
+  random_death_min: 10
+  random_death_max: 30
+  size: 0
+  grow_speed: 1
+  random_size_min: 0.5
+  random_size_max: 1
   Sexe:
   - Male
   - Femelle
   Lapin_neutre: {fileID: 1362289089947233744, guid: d62c85c2b26383a44a1748b4ec199fab, type: 3}
   Move_Spot: {fileID: 6860318524052633286, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
-  thrust: 1
 --- !u!58 &567267983049160191
 CircleCollider2D:
   m_ObjectHideFlags: 0
