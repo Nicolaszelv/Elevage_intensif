@@ -44,6 +44,7 @@ public class Rabbit_behaviour : MonoBehaviour
     private float horny_timer;
 
     public GameObject Lapin_neutre;
+    public GameObject Lapin_parent;
     public GameObject Move_Spot;
     private Vector3 worldPosition;
 
@@ -138,9 +139,11 @@ public class Rabbit_behaviour : MonoBehaviour
             if(waitTime <= 0) {
                 moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
                 waitTime = startWaitTime;
+                Lapin_parent.GetComponent<Animator>().SetTrigger("Jump");
             }
             else {
                 waitTime -= Time.deltaTime;
+                Lapin_parent.GetComponent<Animator>().SetTrigger("Idle");
             }
         }
         

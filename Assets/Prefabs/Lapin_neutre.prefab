@@ -123,6 +123,7 @@ MonoBehaviour:
   horny_time_min: 2
   horny_time_max: 5
   Lapin_neutre: {fileID: 1362289089947233744}
+  Lapin_parent: {fileID: 0}
   Move_Spot: {fileID: 6860318524052633286, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
   population_max: 150
 --- !u!58 &-2698442894382993105
