@@ -39,7 +39,7 @@ public class Toboggan : MonoBehaviour
         lapin1_corps = lapin_p.transform.Find("Lapin1_corps").gameObject;
         lapin1_c = lapin1_corps.transform.Find("lapin1_c").gameObject;
         
-        lapin1_c.GetComponent<Rabbit_behaviour>().moveSpot = spot;
+        lapin_p.GetComponent<Rabbit_movement>().moveSpot = spot;
         lapin1_c.GetComponent<SpriteRenderer>().color = MyCustomColor;
 
         //randomIndex = Random.Range (0, 2);

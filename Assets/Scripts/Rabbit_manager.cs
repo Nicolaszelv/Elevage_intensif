@@ -32,10 +32,10 @@ public class Rabbit_manager : MonoBehaviour
                 
         while(n_total > population_max) {
             if(n_males > n_femelles) {
-                this.DestroyTheOldest(lapins_males);    
+                this.DestroyRandom(lapins_males);    
                 n_males--;    
             } else {
-                this.DestroyTheOldest(lapins_femelles); 
+                this.DestroyRandom(lapins_femelles); 
                 n_femelles --;
             }
             n_total--;
@@ -48,7 +48,7 @@ public class Rabbit_manager : MonoBehaviour
         GUI.Label(new Rect(0,100,100,200), "Nombre de femelles : " + n_femelles);
         }
     
-    void DestroyTheOldest(GameObject[] lapins)
+    /* void DestroyTheOldest(GameObject[] lapins)
     {
         float maxLife = 20f;
         int iLapinVieux = -1;
@@ -64,6 +64,20 @@ public class Rabbit_manager : MonoBehaviour
         if (iLapinVieux > -1)
         {
             lapins[iLapinVieux].GetComponent<Rabbit_behaviour>().Kill();
+        }
+    } */
+
+    void DestroyRandom(GameObject[] lapins)
+    {
+        int iLapinToKill = -1;
+        for (int i = 0; i < lapins.Length; i++)
+        {
+            iLapinToKill = Random.Range(i, lapins.Length);
+        }
+
+        if (iLapinToKill > -1)
+        {
+            lapins[iLapinToKill].GetComponent<Rabbit_behaviour>().Kill();
         }
     }
 }

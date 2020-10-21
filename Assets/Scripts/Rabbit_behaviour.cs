@@ -16,6 +16,7 @@ public class Rabbit_behaviour : MonoBehaviour
     public float maxX;
     public float minY;
     public float maxY;
+
     public bool horny_male;
     public bool horny_femelle;
     
@@ -49,6 +50,7 @@ public class Rabbit_behaviour : MonoBehaviour
     private Vector3 worldPosition;
     private GameObject lapin1_corps;
     private GameObject lapin1_c;
+    private Animator lapin_parent_animator;
 
     private int n_males;
     private int n_femelles;
@@ -64,9 +66,12 @@ public class Rabbit_behaviour : MonoBehaviour
         lapin1_corps = Lapin_parent.transform.Find("Lapin1_corps").gameObject;
         lapin1_c = lapin1_corps.transform.Find("lapin1_c").gameObject;
         
-        startWaitTime = Random.Range(waitMin, waitMax+1);
+        /* startWaitTime = Random.Range(waitMin, waitMax+1);
         waitTime = startWaitTime;
         moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        */ 
+
+        lapin_parent_animator = Lapin_parent.GetComponent<Animator>();
 
         lifetime = 0;
         deathtime = Random.Range(random_death_min, random_death_max);
@@ -93,7 +98,7 @@ public class Rabbit_behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Lapin_parent.transform.position = Vector2.MoveTowards(transform.position, moveSpot.position, speed * Time.deltaTime);
+        //Lapin_parent.transform.position = Vector2.MoveTowards(transform.position, moveSpot.position, speed * Time.deltaTime);
         
         lifetime += Time.deltaTime;
 
@@ -140,17 +145,21 @@ public class Rabbit_behaviour : MonoBehaviour
             gameObject.tag = randomTag;
         }
 
-        if(Vector2.Distance(transform.position, moveSpot.position) < 0.2f){
+        /* if(Vector2.Distance(transform.position, moveSpot.position) < 0.2f){
             if(waitTime <= 0) {
                 moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
                 waitTime = startWaitTime;
-                //Lapin_parent.GetComponent<Animator>().SetTrigger("Jump");
+
+                lapin_parent_animator.SetBool("Jump", true);
+                lapin_parent_animator.SetBool("Idle", false);
             }
             else {
                 waitTime -= Time.deltaTime;
-                Lapin_parent.GetComponent<Animator>().SetTrigger("Idle");
+
+                lapin_parent_animator.SetBool("Idle", true);
+                lapin_parent_animator.SetBool("Jump", false);
             }
-        }
+        } */
         
     }
 
@@ -163,7 +172,7 @@ public class Rabbit_behaviour : MonoBehaviour
                         Transform spot = Instantiate(Move_Spot, gameObject.transform.position, Quaternion.identity).transform;
                         Transform lapin_n = Instantiate(Lapin_parent, gameObject.transform.position, Quaternion.identity).transform;
                         
-                        lapin1_c.GetComponent<Rabbit_behaviour>().moveSpot = spot;
+                        Lapin_parent.GetComponent<Rabbit_movement>().moveSpot = spot;
                         lapin1_c.GetComponent<SpriteRenderer>().color = Color.Lerp(gameObject.GetComponent<SpriteRenderer>().color, other.gameObject.GetComponent<SpriteRenderer>().color,  Random.Range(0.2f, 0.8f));
                         lapin1_c.tag = "Untagged";
 

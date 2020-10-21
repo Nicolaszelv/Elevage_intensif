@@ -332,7 +332,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: d39cb617307a0ee4fbefc59a573dba50, type: 3}
-  m_Color: {r: 0.9960785, g: 0.37254903, b: 0.24313727, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -355,9 +355,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  waitMin: 1
-  waitMax: 3
-  moveSpot: {fileID: 0}
+  waitMin: 2
+  waitMax: 4
+  moveSpot: {fileID: 6860318524052633337, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
   minX: -11.14
   maxX: 11.14
   minY: -4.56
@@ -367,10 +367,10 @@ MonoBehaviour:
   lifetime: 0
   random_death_min: 10
   random_death_max: 30
-  size: 0
-  grow_speed: 0.1
-  random_size_min: 0.5
-  random_size_max: 1.2
+  size: 0.3
+  grow_speed: 0.2
+  random_size_min: 1
+  random_size_max: 1.5
   size_to_be_horny: 0.3
   Sexe:
   - Male
@@ -656,6 +656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7234216312791636403}
   - component: {fileID: 7234216312791636404}
+  - component: {fileID: 1559582399604399952}
   m_Layer: 0
   m_Name: Lapin1
   m_TagString: Untagged
@@ -701,3 +702,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1559582399604399952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7234216312791636405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd3fa15f474c4b459f6e827602979d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  waitMin: 2
+  waitMax: 4
+  moveSpot: {fileID: 6860318524052633337, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
+  minX: -11.14
+  maxX: 11.14
+  minY: -4.56
+  maxY: 4.79
