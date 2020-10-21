@@ -72,6 +72,9 @@ public class Rabbit_behaviour : MonoBehaviour
         */ 
 
         lapin_parent_animator = Lapin_parent.GetComponent<Animator>();
+        lapin_parent_animator.SetBool("Idle", true);
+        lapin_parent_animator.SetBool("Jump", false);
+        
 
         lifetime = 0;
         deathtime = Random.Range(random_death_min, random_death_max);

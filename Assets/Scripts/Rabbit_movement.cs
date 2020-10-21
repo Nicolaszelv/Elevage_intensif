@@ -26,6 +26,8 @@ public class Rabbit_movement : MonoBehaviour
         moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
 
         lapin_parent_animator = GetComponent<Animator>();
+        lapin_parent_animator.SetBool("Idle", true);
+        lapin_parent_animator.SetBool("Jump", false);
     }
 
     // Update is called once per frame
