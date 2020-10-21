@@ -140,7 +140,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8743537
 Transform:
@@ -223,9 +223,6 @@ MonoBehaviour:
   Lapin_neutre: {fileID: 1362289089947233744, guid: d62c85c2b26383a44a1748b4ec199fab, type: 3}
   Move_Spot: {fileID: 6860318524052633286, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
   MyCustomColor: {r: 0.9960785, g: 0.52156866, b: 0.9215687, a: 1}
-  Sexe:
-  - Male
-  - Femelle
 --- !u!60 &8743540
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -284,7 +281,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &14291129
 Transform:
@@ -351,7 +348,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &81966417
+--- !u!1 &52279198
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -359,43 +356,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 81966419}
-  - component: {fileID: 81966418}
+  - component: {fileID: 52279200}
+  - component: {fileID: 52279199}
   m_Layer: 0
-  m_Name: Game
+  m_Name: Rabbit_manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &81966418
+  m_IsActive: 1
+--- !u!114 &52279199
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81966417}
+  m_GameObject: {fileID: 52279198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88560a542606bb142a49684ef25c8f28, type: 3}
+  m_Script: {fileID: 11500000, guid: c232c82d7ff1c1640bd073de0ac45fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lapin_male: {fileID: 1362289089947233744, guid: fc65ce4fab87cf84dab9a1774bd3ea51, type: 3}
-  Lapin_femelle: {fileID: 5743692544940108032, guid: 2eeb22dca05a08b469ccb8d3200cede2, type: 3}
-  Move_Spot: {fileID: 6860318524052633286, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
---- !u!4 &81966419
+  population_max: 150
+  lifetime: 0
+--- !u!4 &52279200
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81966417}
+  m_GameObject: {fileID: 52279198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &137970495
 GameObject:
@@ -411,7 +407,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &137970496
 Transform:
@@ -432,7 +428,7 @@ Transform:
   - {fileID: 1571078719}
   - {fileID: 8743537}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &212464463
 GameObject:
@@ -451,7 +447,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &212464464
 Transform:
@@ -534,9 +530,6 @@ MonoBehaviour:
   Lapin_neutre: {fileID: 1362289089947233744, guid: d62c85c2b26383a44a1748b4ec199fab, type: 3}
   Move_Spot: {fileID: 6860318524052633286, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
   MyCustomColor: {r: 0.9960785, g: 0.9176471, b: 0.227451, a: 1}
-  Sexe:
-  - Male
-  - Femelle
 --- !u!60 &212464467
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -712,7 +705,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &530150055
 Transform:
@@ -795,9 +788,6 @@ MonoBehaviour:
   Lapin_neutre: {fileID: 1362289089947233744, guid: d62c85c2b26383a44a1748b4ec199fab, type: 3}
   Move_Spot: {fileID: 6860318524052633286, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
   MyCustomColor: {r: 0.14117648, g: 0.627451, b: 0.9960785, a: 1}
-  Sexe:
-  - Male
-  - Femelle
 --- !u!60 &530150058
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -887,7 +877,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1093698535
 GameObject:
@@ -904,7 +894,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!212 &1093698536
 SpriteRenderer:
@@ -986,7 +976,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1298033987
 Transform:
@@ -1068,7 +1058,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1505499836
 Transform:
@@ -1150,7 +1140,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1569628344
 Transform:
@@ -1234,7 +1224,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1571078719
 Transform:
@@ -1317,9 +1307,6 @@ MonoBehaviour:
   Lapin_neutre: {fileID: 1362289089947233744, guid: d62c85c2b26383a44a1748b4ec199fab, type: 3}
   Move_Spot: {fileID: 6860318524052633286, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
   MyCustomColor: {r: 0.854902, g: 0.5294118, b: 0.9960785, a: 1}
-  Sexe:
-  - Male
-  - Femelle
 --- !u!60 &1571078722
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1380,7 +1367,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1628183699
 Transform:
@@ -1463,9 +1450,6 @@ MonoBehaviour:
   Lapin_neutre: {fileID: 1362289089947233744, guid: d62c85c2b26383a44a1748b4ec199fab, type: 3}
   Move_Spot: {fileID: 6860318524052633286, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
   MyCustomColor: {r: 1, g: 0.15686275, b: 0.15686275, a: 1}
-  Sexe:
-  - Male
-  - Femelle
 --- !u!60 &1628183702
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1524,7 +1508,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1638263397
 Transform:
@@ -1608,7 +1592,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1666592382
 Transform:
@@ -1691,9 +1675,6 @@ MonoBehaviour:
   Lapin_neutre: {fileID: 1362289089947233744, guid: d62c85c2b26383a44a1748b4ec199fab, type: 3}
   Move_Spot: {fileID: 6860318524052633286, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
   MyCustomColor: {r: 0.29411766, g: 0.9450981, b: 0.9960785, a: 1}
-  Sexe:
-  - Male
-  - Femelle
 --- !u!60 &1666592385
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1807,7 +1788,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1825849482
 GameObject:
@@ -1824,7 +1805,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1825849483
 Transform:
@@ -1908,7 +1889,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1977078779
 Transform:
@@ -1991,9 +1972,6 @@ MonoBehaviour:
   Lapin_neutre: {fileID: 1362289089947233744, guid: d62c85c2b26383a44a1748b4ec199fab, type: 3}
   Move_Spot: {fileID: 6860318524052633286, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
   MyCustomColor: {r: 0.427451, g: 0.9960785, b: 0.23137257, a: 1}
-  Sexe:
-  - Male
-  - Femelle
 --- !u!60 &1977078782
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2052,7 +2030,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1981873052
 Transform:

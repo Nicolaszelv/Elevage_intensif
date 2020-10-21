@@ -9,8 +9,8 @@ public class Toboggan : MonoBehaviour
     public GameObject Move_Spot;
     private Vector3 worldPosition;
     public Color MyCustomColor;
-    public string[] Sexe = new string[2];
-    private int randomIndex;
+    //public string[] Sexe = new string[2];
+    //private int randomIndex;
 
     void Start()
     {
@@ -35,9 +35,9 @@ public class Toboggan : MonoBehaviour
         lapin_n.GetComponent<Rabbit_behaviour>().moveSpot = spot;
         lapin_n.GetComponent<SpriteRenderer>().color = MyCustomColor;
 
-        randomIndex = Random.Range (0, 2);
-        string randomTag = Sexe[randomIndex];
-        lapin_n.tag = randomTag;
+        //randomIndex = Random.Range (0, 2);
+        //string randomTag = Sexe[randomIndex];
+        //lapin_n.tag = randomTag;
 
     }
 }

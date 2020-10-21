@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Rabbit_behaviour : MonoBehaviour
@@ -28,18 +29,33 @@ public class Rabbit_behaviour : MonoBehaviour
     public float random_size_min;
     public float random_size_max;
     private float final_size;
+    public float size_to_be_horny;
+
+    public string[] Sexe = new string[2];
+    private int randomIndex;
 
     public int nb_babies_min;
     public int nb_babies_max;
     private int nb_babies;
 
-    public string[] Sexe = new string[2];
-    private int randomIndex;
+    public float horny_time_min;
+    public float horny_time_max;
+    private float horny_ready;
+    private float horny_timer;
 
     public GameObject Lapin_neutre;
     public GameObject Move_Spot;
     private Vector3 worldPosition;
 
+    private int n_males;
+    private int n_femelles;
+    private int n_total;
+    public int population_max;
+
+    private GameObject[] lapins_males;
+    private GameObject[] lapins_femelles;
+
+    
     void Start()
     {
         startWaitTime = Random.Range(waitMin, waitMax+1);
@@ -54,6 +70,8 @@ public class Rabbit_behaviour : MonoBehaviour
 
         nb_babies = Random.Range(nb_babies_min, nb_babies_max);
 
+        horny_ready = Random.Range(horny_time_min, horny_time_max);
+
         if (gameObject.tag == "Male") {
             horny_male = true;
             horny_femelle = false;
@@ -63,9 +81,8 @@ public class Rabbit_behaviour : MonoBehaviour
             horny_male = false;
             horny_femelle = true;
         }
-        
-        
     }
+
 
     // Update is called once per frame
     void Update()
@@ -76,7 +93,32 @@ public class Rabbit_behaviour : MonoBehaviour
 
         if(lifetime >= deathtime){
             Destroy(gameObject);
-            Destroy(Move_Spot);
+        }
+
+        if(horny_male == false && gameObject.tag == "Male"){
+            horny_timer += Time.deltaTime;
+            speed = 1;
+            if(horny_timer >= horny_ready){
+                horny_male = true;
+                horny_timer = 0;
+            }
+            else {
+                speed = 5;
+            }
+            
+        }
+
+        if(horny_femelle == false && gameObject.tag == "Femelle"){
+            horny_timer += Time.deltaTime;
+            speed = 1;
+            if(horny_timer >= horny_ready){
+                horny_femelle = true;
+                horny_timer = 0;
+            }
+            else {
+                speed = 5;
+            }
+            
         }
 
         size += Time.deltaTime * grow_speed;
@@ -84,6 +126,12 @@ public class Rabbit_behaviour : MonoBehaviour
 
         if(size >= final_size){
             size = final_size;
+        }
+
+        if(size >= size_to_be_horny & gameObject.tag == "Untagged"){
+            randomIndex = Random.Range (0, 2);
+            string randomTag = Sexe[randomIndex];
+            gameObject.tag = randomTag;
         }
 
         if(Vector2.Distance(transform.position, moveSpot.position) < 0.2f){
@@ -99,68 +147,25 @@ public class Rabbit_behaviour : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "Femelle" & gameObject.tag == "Male" & other.gameObject.GetComponent<Rabbit_behaviour>().horny_femelle == true & horny_male == true) // SI LAPIN RENCONTRE LAPINE
+        if (other.gameObject.tag == "Femelle" && gameObject.tag == "Male" && other.gameObject.GetComponent<Rabbit_behaviour>().horny_femelle == true && horny_male == true) // SI LAPIN RENCONTRE LAPINE
             {
-                speed = 1;
-                other.gameObject.GetComponent<Rabbit_behaviour>().speed = 1;
-
-                
 
                 for (int i = 0; i < nb_babies; i++)
                     {
                         Transform spot = Instantiate(Move_Spot, gameObject.transform.position, Quaternion.identity).transform;
                         Transform lapin_n = Instantiate(Lapin_neutre, gameObject.transform.position, Quaternion.identity).transform;
-                        //Instantiate(prefab, new Vector3(i * 2.0F, 0, 0), Quaternion.identity);
                         lapin_n.GetComponent<Rabbit_behaviour>().moveSpot = spot;
-                        lapin_n.GetComponent<Rabbit_behaviour>().speed = 8;
                         lapin_n.GetComponent<SpriteRenderer>().color = Color.Lerp(gameObject.GetComponent<SpriteRenderer>().color, other.gameObject.GetComponent<SpriteRenderer>().color,  Random.Range(0.2f, 0.8f));
-                        Debug.Log("new babies !");
+                        lapin_n.tag = "Untagged";
+                        other.gameObject.GetComponent<Rabbit_behaviour>().horny_femelle = false;
+                        horny_male = false;
                     }
-
-                
-
-                //randomIndex = Random.Range (0, 2);
-                //string randomTag = Sexe[randomIndex];
-                //lapin_n.tag = randomTag;
-
-                horny_male = false;
-                other.gameObject.GetComponent<Rabbit_behaviour>().horny_femelle = false;
-                StartCoroutine("Horny_over_time");
-                Debug.Log("LAPIN RENCONTRE LAPINE");
-            }
-
-        /* if (other.gameObject.tag == "Male" & gameObject.tag == "Femelle" & other.gameObject.GetComponent<Rabbit_behaviour>().horny_male == true & horny_femelle == true) // SI LAPINE RENCONTRE LAPINE
-            {
-                
-                speed = 1;
-                other.gameObject.GetComponent<Rabbit_behaviour>().speed = 1;
-
-                Transform spot = Instantiate(Move_Spot, worldPosition, Quaternion.identity).transform;
-                Transform lapin_n = Instantiate(Lapin_neutre, worldPosition, Quaternion.identity).transform;
-                
-                lapin_n.GetComponent<Rabbit_behaviour>().moveSpot = spot;
-                lapin_n.GetComponent<SpriteRenderer>().color = Color.Lerp(sr_male.color, sr_femelle.color, 0.5f);
-
-                randomIndex = Random.Range (0, 2);
-                string randomTag = Sexe[randomIndex];
-                lapin_n.tag = randomTag;
-                
-                horny_femelle = false;
-
-                Debug.Log("LAPINE RENCONTRE LAPIN");
-            } */
-
-        
+            }  
     }
 
-    private IEnumerator Horny_over_time()
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(5f);
-                horny_male = true;
-                horny_femelle = true;
-                Debug.Log("horny again");
-            }
-        }
+    public void Kill() {
+        lifetime = 50;
+    }
+
+    
 }
