@@ -97,15 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0399a263a0820048a8a142cbe8103d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rabbit_manager: {fileID: 3718277481272107854, guid: 338f2d9ee082737448c6c7a458300a1e, type: 3}
   speed: 5
   waitMin: 1
   waitMax: 3
   moveSpot: {fileID: 6860318524052633337, guid: 265e5b9da6ed22b4caf414202ba30281, type: 3}
-  minX: -13
-  maxX: 13
-  minY: -6.4
-  maxY: 3.5
+  minX: -11.14
+  maxX: 11.14
+  minY: -4.56
+  maxY: 4.79
   horny_male: 0
   horny_femelle: 0
   lifetime: 0
