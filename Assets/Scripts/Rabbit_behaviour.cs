@@ -50,6 +50,9 @@ public class Rabbit_behaviour : MonoBehaviour
     private Vector3 worldPosition;
     private GameObject lapin1_corps;
     private GameObject lapin1_c;
+    private GameObject lapin1_baby_corps;
+    private GameObject lapin1_baby_c;
+    private GameObject lapin_n;
     private Animator lapin_parent_animator;
 
     private int n_males;
@@ -63,7 +66,7 @@ public class Rabbit_behaviour : MonoBehaviour
     
     void Start()
     {
-        lapin1_corps = Lapin_parent.transform.Find("Lapin1_corps").gameObject;
+        lapin1_corps = transform.parent.gameObject;
         lapin1_c = lapin1_corps.transform.Find("lapin1_c").gameObject;
         
         /* startWaitTime = Random.Range(waitMin, waitMax+1);
@@ -71,7 +74,7 @@ public class Rabbit_behaviour : MonoBehaviour
         moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
         */ 
 
-        lapin_parent_animator = Lapin_parent.GetComponent<Animator>();
+        lapin_parent_animator = GetComponentInParent<Animator>();
         lapin_parent_animator.SetBool("Idle", true);
         lapin_parent_animator.SetBool("Jump", false);
         
@@ -106,37 +109,51 @@ public class Rabbit_behaviour : MonoBehaviour
         lifetime += Time.deltaTime;
 
         if(lifetime >= deathtime){
-            Destroy(Lapin_parent);
+            Destroy(transform.parent.parent.gameObject);
         }
 
         if(horny_male == false && gameObject.tag == "Male"){
             horny_timer += Time.deltaTime;
-            speed = 1;
             if(horny_timer >= horny_ready){
                 horny_male = true;
                 horny_timer = 0;
+                speed = 5;
             }
             else {
-                speed = 5;
+                speed = 1;
             }
             
         }
 
         if(horny_femelle == false && gameObject.tag == "Femelle"){
             horny_timer += Time.deltaTime;
-            speed = 1;
             if(horny_timer >= horny_ready){
                 horny_femelle = true;
                 horny_timer = 0;
+                speed = 5;
             }
             else {
-                speed = 5;
+                speed = 1;
             }
             
         }
 
+        if(gameObject.tag == "Femelle"){
+            horny_male = false;      
+        }
+
+        if(gameObject.tag == "Male"){
+            horny_femelle = false;      
+        }
+
+        if(gameObject.tag == "Untagged"){
+            horny_femelle = false;
+            horny_male = false;    
+        }
+
         size += Time.deltaTime * grow_speed;
-        Lapin_parent.GetComponent<Transform>().localScale = new Vector3 (size, size, size);
+        transform.parent.parent.localScale = new Vector3 (size, size, size);
+        lapin1_corps.transform.localScale = new Vector3 (size, size, size);
 
         if(size >= final_size){
             size = final_size;
@@ -173,11 +190,17 @@ public class Rabbit_behaviour : MonoBehaviour
                 for (int i = 0; i < nb_babies; i++)
                     {
                         Transform spot = Instantiate(Move_Spot, gameObject.transform.position, Quaternion.identity).transform;
-                        Transform lapin_n = Instantiate(Lapin_parent, gameObject.transform.position, Quaternion.identity).transform;
+                        lapin_n = Instantiate(Lapin_parent, gameObject.transform.position, Quaternion.identity);
                         
-                        Lapin_parent.GetComponent<Rabbit_movement>().moveSpot = spot;
-                        lapin1_c.GetComponent<SpriteRenderer>().color = Color.Lerp(gameObject.GetComponent<SpriteRenderer>().color, other.gameObject.GetComponent<SpriteRenderer>().color,  Random.Range(0.2f, 0.8f));
-                        lapin1_c.tag = "Untagged";
+                        lapin1_baby_corps = lapin_n.transform.Find("Lapin1_corps").gameObject;
+                        lapin1_baby_c = lapin1_baby_corps.transform.Find("lapin1_c").gameObject;
+
+                        lapin_n.GetComponent<Rabbit_movement>().moveSpot = spot;
+                        lapin1_baby_c.GetComponent<SpriteRenderer>().color = Color.Lerp(gameObject.GetComponent<SpriteRenderer>().color, other.gameObject.GetComponent<SpriteRenderer>().color,  Random.Range(0.2f, 0.8f));
+                        lapin1_baby_c.tag = "Untagged";
+
+                        lapin_n.GetComponent<Animator>().SetBool("Idle", true);
+                        lapin_n.GetComponent<Animator>().SetBool("Jump", false);
 
                         other.gameObject.GetComponent<Rabbit_behaviour>().horny_femelle = false;
                         horny_male = false;

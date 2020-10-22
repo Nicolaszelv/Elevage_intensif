@@ -371,7 +371,7 @@ MonoBehaviour:
   grow_speed: 0.2
   random_size_min: 1
   random_size_max: 1.5
-  size_to_be_horny: 0.3
+  size_to_be_horny: 0.8
   Sexe:
   - Male
   - Femelle
