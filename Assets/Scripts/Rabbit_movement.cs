@@ -18,6 +18,7 @@ public class Rabbit_movement : MonoBehaviour
     public float maxX;
     public float minY;
     public float maxY;
+    public bool left_side;
 
     void Start()
     {
@@ -26,8 +27,6 @@ public class Rabbit_movement : MonoBehaviour
         moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
 
         lapin_parent_animator = GetComponent<Animator>();
-        lapin_parent_animator.SetBool("Idle", true);
-        lapin_parent_animator.SetBool("Jump", false);
     }
 
     // Update is called once per frame
@@ -38,17 +37,43 @@ public class Rabbit_movement : MonoBehaviour
         if(Vector2.Distance(transform.position, moveSpot.position) < 0.2f){
             if(waitTime <= 0) {
                 moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+                if(transform.position.x < moveSpot.position.x) {
+                    lapin_parent_animator.SetBool("Jump_right", true);
+                    lapin_parent_animator.SetBool("Jump_left", false);
+                    left_side = false;
+                    Debug.Log("spot à droite");
+                }
+
+                if(transform.position.x > moveSpot.position.x) {
+                    lapin_parent_animator.SetBool("Jump_right", false);
+                    lapin_parent_animator.SetBool("Jump_left", true);
+                    
+                    left_side = true;
+                    Debug.Log("spot à gauche");
+                }
+
                 waitTime = startWaitTime;
 
-                lapin_parent_animator.SetBool("Jump", true);
-                lapin_parent_animator.SetBool("Idle", false);
+                lapin_parent_animator.SetBool("Idle_left", false);
+                lapin_parent_animator.SetBool("Idle_right", false);
             }
             else {
-                waitTime -= Time.deltaTime;
 
-                lapin_parent_animator.SetBool("Idle", true);
-                lapin_parent_animator.SetBool("Jump", false);
-            }
+                waitTime -= Time.deltaTime;
+                
+                lapin_parent_animator.SetBool("Jump_right", false);
+                lapin_parent_animator.SetBool("Jump_left", false);
+
+                if(left_side == true){
+                    lapin_parent_animator.SetBool("Idle_left", true);
+                    lapin_parent_animator.SetBool("Idle_right", false);
+                }
+
+                if(left_side == false){
+                    lapin_parent_animator.SetBool("Idle_left", false);
+                    lapin_parent_animator.SetBool("Idle_right", true);
+                }
         }
     }
+}
 }

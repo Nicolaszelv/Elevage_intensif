@@ -53,6 +53,8 @@ public class Rabbit_behaviour : MonoBehaviour
     private GameObject lapin1_baby_corps;
     private GameObject lapin1_baby_c;
     private GameObject lapin_n;
+    private GameObject lapin1_scale_left;
+
     private Animator lapin_parent_animator;
 
     private int n_males;
@@ -74,9 +76,6 @@ public class Rabbit_behaviour : MonoBehaviour
         moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
         */ 
 
-        lapin_parent_animator = GetComponentInParent<Animator>();
-        lapin_parent_animator.SetBool("Idle", true);
-        lapin_parent_animator.SetBool("Jump", false);
         
 
         lifetime = 0;
@@ -109,7 +108,7 @@ public class Rabbit_behaviour : MonoBehaviour
         lifetime += Time.deltaTime;
 
         if(lifetime >= deathtime){
-            Destroy(transform.parent.parent.gameObject);
+            Destroy(transform.parent.parent.parent.gameObject);
         }
 
         if(horny_male == false && gameObject.tag == "Male"){
@@ -152,7 +151,7 @@ public class Rabbit_behaviour : MonoBehaviour
         }
 
         size += Time.deltaTime * grow_speed;
-        transform.parent.parent.localScale = new Vector3 (size, size, size);
+        transform.parent.parent.parent.localScale = new Vector3 (size, size, size);
         lapin1_corps.transform.localScale = new Vector3 (size, size, size);
 
         if(size >= final_size){
@@ -192,15 +191,13 @@ public class Rabbit_behaviour : MonoBehaviour
                         Transform spot = Instantiate(Move_Spot, gameObject.transform.position, Quaternion.identity).transform;
                         lapin_n = Instantiate(Lapin_parent, gameObject.transform.position, Quaternion.identity);
                         
-                        lapin1_baby_corps = lapin_n.transform.Find("Lapin1_corps").gameObject;
+                        lapin1_scale_left = lapin_n.transform.Find("Parent_scaling_left").gameObject;
+                        lapin1_baby_corps = lapin1_scale_left.transform.Find("Lapin1_corps").gameObject;
                         lapin1_baby_c = lapin1_baby_corps.transform.Find("lapin1_c").gameObject;
 
                         lapin_n.GetComponent<Rabbit_movement>().moveSpot = spot;
                         lapin1_baby_c.GetComponent<SpriteRenderer>().color = Color.Lerp(gameObject.GetComponent<SpriteRenderer>().color, other.gameObject.GetComponent<SpriteRenderer>().color,  Random.Range(0.2f, 0.8f));
                         lapin1_baby_c.tag = "Untagged";
-
-                        lapin_n.GetComponent<Animator>().SetBool("Idle", true);
-                        lapin_n.GetComponent<Animator>().SetBool("Jump", false);
 
                         other.gameObject.GetComponent<Rabbit_behaviour>().horny_femelle = false;
                         horny_male = false;
